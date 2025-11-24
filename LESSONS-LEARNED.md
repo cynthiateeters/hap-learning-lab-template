@@ -35,6 +35,7 @@ This document synthesizes lessons learned from building a complete 6-station HAP
 ### Before writing any code
 
 **Read CLAUDE.md completely** (especially these sections):
+
 - clamp() formula requirements
 - HAP voice guidelines
 - CSS color standards (hsl() only)
@@ -45,6 +46,7 @@ This document synthesizes lessons learned from building a complete 6-station HAP
 ### Station structure planning
 
 **Target metrics**:
+
 - 600-700 lines total
 - 2-4 main content sections (NOT 7+)
 - EXACTLY 3 insight cards
@@ -87,6 +89,7 @@ cp stations/station1.html stations/station2.html  # NO!
 | "you'll learn" | neutral description |
 
 **Acceptable exceptions**:
+
 - Prof. Teeters quotes: "HAP, you need to use computed slopes"
 - Forward references: "we'll explore in Station 5" (minor, acceptable)
 
@@ -95,6 +98,7 @@ cp stations/station1.html stations/station2.html  # NO!
 ### HAP's narrative structure
 
 **Every station should include**:
+
 1. **HAP's struggle/mistake** - What HAP did wrong initially
 2. **Prof. Teeters intervention** - What Prof. Teeters asked/taught
 3. **HAP's aha moment** - The breakthrough realization
@@ -108,6 +112,7 @@ cp stations/station1.html stations/station2.html  # NO!
 **EXACTLY 3 cards** - No more, no less
 
 **Structure per card**:
+
 ```html
 <div class="insight-card">
     <h3><span class="insight-icon">[EMOJI]</span> [Title]</h3>
@@ -154,28 +159,6 @@ cp stations/station1.html stations/station2.html  # NO!
 
 **Critical constraint**: Use `hap-brain-explodes` maximum ONCE per station (reserved for biggest breakthrough).
 
-### Common real vs hallucinated images
-
-**Real images (SAFE)**:
-- `hap-laptop_xiewar`
-- `hap-confused-map_q8q0ej`
-- `hap-brain-explodes_wu0or8`
-- `hap-thumbs-up_s4si0j`
-- `HAP-learner_dvehmt`
-- `hap-celebrating_bljvgl`
-- `hap-broke-things_qtbum4`
-- `hap-lectures_fjnxdj`
-- `hap-scientist_safwtg`
-
-**Hallucinated images (DO NOT USE)**:
-- `HyBit_frustrated_while_coding_and_looking_at_screen_wl4rzg`
-- `hap-aha_ktnttc`
-- `HyBit_excited_about_coding_bzrkl7`
-- `hap-reflecting_z6kbkg`
-- `HyBit_lecture` (use `hap-lectures_fjnxdj` instead)
-
----
-
 ## CSS standards
 
 ### clamp() formula requirements
@@ -185,6 +168,7 @@ cp stations/station1.html stations/station2.html  # NO!
 **Formula**: `clamp(min, base + slope × viewport-unit, max)`
 
 Where:
+
 - `slope = (max-size - min-size) ÷ (max-viewport - min-viewport)`
 - `base = min-size - (slope × min-viewport)`
 
@@ -339,6 +323,7 @@ Station 6 ALWAYS teaches AI assistance and follows a fixed 12-section structure:
 **Lesson learned**: Phase 3 took 45 minutes instead of estimated 4-5 hours by following clear patterns.
 
 **Structure**: 20 parameters total
+
 - 2 global (`detail`, `stations`)
 - 18 station-specific (3 per station)
 
@@ -347,6 +332,7 @@ Station 6 ALWAYS teaches AI assistance and follows a fixed 12-section structure:
 ### Message quality patterns
 
 **Good message structure**:
+
 ```json
 {
   "title": "[EMOJI] [3-8 word title]",
@@ -469,6 +455,7 @@ Following these lessons learned will result in:
 - **Fewer tedious fix cycles**
 
 The most impactful changes:
+
 1. **Review CLAUDE.md before coding** (prevents clamp() violations)
 2. **Verify HAP images against inventory** (prevents hallucination)
 3. **Write first-person from start** (prevents voice violations)

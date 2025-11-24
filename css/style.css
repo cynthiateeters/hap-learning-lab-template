@@ -37,24 +37,24 @@
 
 /* Color Palette - Warm & Scientific */
 :root {
-  --warm-orange: hsl(32, 76%, 63%);
+  --warm-orange: hsl(32, 76%, 37%);
   --soft-orange: hsl(35, 83%, 74%);
   --peach-background: hsl(32, 41%, 90%);
-  --cream-white: hsl(32, 100%, 97%);
+  --cream-white: hsl(32, 100%, 98%);
   --dark-brown: hsl(28, 45%, 16%);
   --medium-brown: hsl(22, 22%, 34%);
   --light-brown: hsl(24, 18%, 53%);
   --hybit-gray: hsl(220, 12%, 57%);
-  --teal-accent: hsl(168, 28%, 54%);
+  --teal-accent: hsl(168, 28%, 44%);
   --success-green: hsl(102, 41%, 56%);
   --warning-red: hsl(349, 71%, 64%);
 
   /* WCAG AA accessible darker variants for text on cream background */
-  --teal-darker: hsl(168, 34%, 35%);
+  --teal-darker: hsl(168, 34%, 33%);
   /* 4.5:1 contrast ratio - for normal text */
-  --orange-darker: hsl(32, 61%, 47%);
+  --orange-darker: hsl(32, 61%, 35%);
   /* 3.1:1 contrast ratio - for large bold text on cream */
-  --orange-darkest: hsl(32, 64%, 33%);
+  --orange-darkest: hsl(32, 64%, 31%);
   /* 4.5:1 contrast ratio - for normal text on peach */
   --success-darker: hsl(142, 76%, 36%);
   /* Darker green for success messages - 4.5:1 for normal text */
