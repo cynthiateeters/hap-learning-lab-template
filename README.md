@@ -10,11 +10,12 @@ A complete template system for building 6-station learning experiences featuring
 
 This repository contains reusable infrastructure for creating HAP Learning Labs on any topic:
 
-- **7 Claude Skills** for progressive validation
-- **4 HTML/JSON templates** for stations, demos, and content
+- **8 Claude Skills** for progressive validation
+- **5 HTML/JSON templates** for stations (1-5 and 6), demos, and content
 - **Static assets** (CSS, JS, data) for HAP design system
 - **Zero dependencies** - pure HTML/CSS/JS, no build process
 - **100% Lighthouse scores** - accessibility and performance built-in
+- **Lessons learned** - documented patterns from production use
 
 ## Quick start
 
@@ -40,7 +41,7 @@ Save as `CONTENT-PLAN.md` in your project root.
 
 ### 3. Customize the templates
 
-**For each station (1-6)**:
+**For Stations 1-5**:
 
 ```bash
 # Copy the station template
@@ -49,6 +50,15 @@ cp templates/station-template.html stations/station1.html
 # Fill in [PLACEHOLDER] content using your CONTENT-PLAN.md
 # Maintain HAP's first-person voice
 # Use Claude Skills for validation
+```
+
+**For Station 6** (AI assistance - fixed structure):
+
+```bash
+# Station 6 ALWAYS teaches AI assistance for your topic
+cp templates/station6-template.html stations/station6.html
+
+# Only customize [PLACEHOLDER] content, not the 12-section structure
 ```
 
 **For interactive demos**:
@@ -97,7 +107,7 @@ npm run lh:ci
 
 ### Claude Skills (`.claude/skills/`)
 
-7 Skills that enforce HAP Learning Lab standards:
+8 Skills that enforce HAP Learning Lab standards:
 
 1. **hap-voice** - HAP's personality and first-person narrative
 2. **accessibility-check** - WCAG 2.2 Level AA compliance
@@ -106,15 +116,17 @@ npm run lh:ci
 5. **station-content** - Station HTML structure patterns
 6. **demo-builder** - Interactive demo patterns
 7. **css-standards** - HSL color format enforcement
+8. **hap-image-validation** - HAP image verification + complete inventory
 
 ### Templates (`templates/`)
 
-4 complete templates with [PLACEHOLDER] syntax:
+5 complete templates with [PLACEHOLDER] syntax:
 
-1. **station-template.html** (~375 lines) - Complete station structure
-2. **demo-template.html** (~235 lines) - Interactive demo structure
-3. **curriculum-plan-template.md** (~490 lines) - Content planning guide
-4. **hybit-insights-template.json** (~275 lines) - Easter egg messages
+1. **station-template.html** (~375 lines) - Station structure for Stations 1-5
+2. **station6-template.html** (~1,041 lines) - Fixed AI assistance structure
+3. **demo-template.html** (~235 lines) - Interactive demo structure
+4. **curriculum-plan-template.md** (~490 lines) - Content planning guide
+5. **hybit-insights-template.json** (~275 lines) - Easter egg messages
 
 ### Static assets
 
@@ -172,6 +184,49 @@ Every page targets:
 - Single source of truth for colors
 - BEM-inspired component naming
 
+## Success metrics
+
+Quality targets achieved in production (HAP's Intrinsic Layouts Learning Lab):
+
+### Lighthouse scores
+
+| Metric | Target | Achieved |
+|--------|--------|----------|
+| Performance | ≥99/100 | 99-100/100 ✅ |
+| Accessibility | 100/100 | 100/100 ✅ |
+| Best Practices | 100/100 | 100/100 ✅ |
+| SEO | 100/100 | 100/100 ✅ |
+
+### Validation scores
+
+| Skill | Score | Notes |
+|-------|-------|-------|
+| HAP Voice | 99/100 | First-person throughout |
+| Accessibility | 100/100 | WCAG 2.2 Level AA |
+| CSS Standards | 99.9/100 | All hsl() format |
+| Station Structure | 99.98/100 | Consistent patterns |
+| Overall | 98.8/100 | Production quality |
+
+### Time efficiency (from LESSONS-LEARNED.md)
+
+| Optimization | Time saved per station |
+|--------------|------------------------|
+| Review CLAUDE.md before coding | 30 minutes |
+| Write first-person from start | 20 minutes |
+| Verify HAP images against inventory | 30 minutes |
+| Plan 2-4 sections (not 7+) | 15 minutes |
+| **Total** | **~1.5 hours** |
+
+### Project phase efficiency
+
+| Phase | Estimated | Actual | Savings |
+|-------|-----------|--------|---------|
+| Station assessment | 8-20 hrs | 5 hrs | 60-75% |
+| Easter egg system | 4-5 hrs | 45 min | 85% |
+| Validation | 15-21 hrs | 4 hrs | 73-81% |
+
+Following the documented patterns results in significant time savings.
+
 ## Architecture
 
 ### File structure
@@ -179,12 +234,26 @@ Every page targets:
 ```
 /
 ├── .claude/
-│   └── skills/                # Claude Skills for validation
-├── templates/                 # HTML/JSON/MD templates
+│   └── skills/                # 8 Claude Skills for validation
+│       ├── hap-voice/
+│       ├── accessibility-check/
+│       ├── security-audit/
+│       ├── testing-framework/
+│       ├── station-content/
+│       ├── demo-builder/
+│       ├── css-standards/
+│       └── hap-image-validation/  # Includes complete image inventory
+├── templates/                 # 5 HTML/JSON/MD templates
+│   ├── station-template.html      # Stations 1-5
+│   ├── station6-template.html     # Station 6 (AI assistance)
+│   ├── demo-template.html
+│   ├── curriculum-plan-template.md
+│   └── hybit-insights-template.json
 ├── css/                       # HAP design system
 ├── js/                        # Easter egg system
 ├── data/                      # Documentation
 ├── CLAUDE.md                  # Claude Code configuration
+├── LESSONS-LEARNED.md         # Patterns from production use
 └── README.md                  # This file
 ```
 
@@ -199,6 +268,63 @@ Every page targets:
 
 ## Customization workflow
 
+### Visual workflow diagram
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        HAP LEARNING LAB WORKFLOW                        │
+└─────────────────────────────────────────────────────────────────────────┘
+
+    ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+    │   PLANNING   │────▶│   BUILDING   │────▶│  VALIDATING  │
+    │   2-4 hrs    │     │   6-12 hrs   │     │   1-2 hrs    │
+    └──────────────┘     └──────────────┘     └──────────────┘
+           │                    │                    │
+           ▼                    ▼                    ▼
+    ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+    │ • Curriculum │     │ • Stations   │     │ • 8 Skills   │
+    │   plan       │     │   1-5        │     │ • Lighthouse │
+    │ • 6 topics   │     │ • Station 6  │     │ • Browser    │
+    │ • HAP voice  │     │ • Demos      │     │   testing    │
+    │ • Demo ideas │     │ • Easter eggs│     │ • Mobile     │
+    └──────────────┘     └──────────────┘     └──────────────┘
+                                                     │
+                                                     ▼
+                                              ┌──────────────┐
+                                              │  DEPLOYMENT  │
+                                              │   30 min     │
+                                              └──────────────┘
+
+    CRITICAL CHECKPOINTS:
+    ─────────────────────
+    □ Before coding    → Review CLAUDE.md (clamp formulas, voice, colors)
+    □ Before images    → Check HAP image inventory (prevent hallucination)
+    □ Before commit    → Run all 8 Claude Skills
+    □ Before deploy    → Lighthouse 99+/100
+```
+
+### Per-station workflow
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      STATION IMPLEMENTATION (3-4 hrs)                    │
+└─────────────────────────────────────────────────────────────────────────┘
+
+    BEFORE           DURING              AFTER             READY
+    ──────           ──────              ─────             ─────
+    ┌─────┐         ┌─────┐             ┌─────┐          ┌─────┐
+    │Read │   ───▶  │Write│   ───▶      │Valid│   ───▶   │Test │
+    │Plan │         │HTML │             │Skills│         │Live │
+    └─────┘         └─────┘             └─────┘          └─────┘
+       │               │                   │                │
+       ▼               ▼                   ▼                ▼
+    • CLAUDE.md     • First-person      • css-standards   • live-server
+    • Impl plan     • 2-4 sections      • hap-voice       • All pages
+    • Image         • 3 insight cards   • station-content • Easter eggs
+      inventory     • Verified images   • accessibility   • Mobile
+                    • Proper clamp()    • hap-image       • Lighthouse
+```
+
 ### Recommended process
 
 1. **Planning phase** (2-4 hours)
@@ -208,13 +334,13 @@ Every page targets:
    - Plan interactive demos
 
 2. **Template customization** (6-12 hours)
-   - Customize station HTML files (6 stations)
+   - Customize station HTML files (Stations 1-5 + Station 6)
    - Create interactive demos (2-3 per station)
    - Fill easter egg messages
    - Test locally
 
 3. **Validation phase** (1-2 hours)
-   - Run all Claude Skills
+   - Run all 8 Claude Skills
    - Fix accessibility issues
    - Optimize performance
    - Test on mobile/tablet/desktop
@@ -228,6 +354,8 @@ Every page targets:
 
 **First learning lab**: 10-20 hours total (includes learning the system)
 **Subsequent labs**: 6-12 hours (familiar with patterns)
+
+See `LESSONS-LEARNED.md` for detailed time savings from following established patterns.
 
 ## Claude Skills usage
 
@@ -466,9 +594,11 @@ Commercial use requires permission. Contact: [contact information]
 ### Documentation
 
 - `CLAUDE.md` - Complete Claude Code configuration
+- `LESSONS-LEARNED.md` - Patterns and time savings from production use
 - `data/README.md` - Easter egg system guide
 - Individual Skill `SKILL.md` files - Detailed validation guides
 - Template comments - Inline [PLACEHOLDER] guidance
+- HAP image inventory - `.claude/skills/hap-image-validation/hap-cloudinary-complete-inventory.md`
 
 ### Getting help
 
