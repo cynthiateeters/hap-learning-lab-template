@@ -192,32 +192,11 @@ padding: clamp(1rem, 2vw, 3rem);  /* Missing base calculation */
 
 **Rule**: All colors MUST use hsl() format
 
-```css
-/* CORRECT */
---warm-orange: hsl(32, 76%, 63%);
-background: hsl(32, 35%, 88%);
-
-/* WRONG - never use */
---warm-orange: #E8A557;  /* hex forbidden */
-background: rgb(232, 165, 87);  /* rgb forbidden */
-```
-
 **Validation from production**: Zero hex or rgb colors in final codebase. 3 instances of old `hsla()` syntax found (minor, but prefer modern `hsl()` with alpha channel).
 
 ### CSS custom properties
 
 **All colors defined in `:root`** - single source of truth
-
-```css
-:root {
-  /* Core palette */
-  --warm-orange: hsl(32, 76%, 63%);
-  --peach-background: hsl(32, 35%, 88%);
-
-  /* WCAG AA accessible variants */
-  --warm-orange-darker: hsl(32, 76%, 45%);  /* 4.5:1 on light */
-}
-```
 
 **Usage**: Always reference via `var(--custom-property)`, never repeat raw hsl() values.
 
@@ -347,15 +326,6 @@ Station 6 ALWAYS teaches AI assistance and follows a fixed 12-section structure:
 
 ## Performance optimization
 
-### Lighthouse targets
-
-| Metric | Target | Achieved |
-|--------|--------|----------|
-| Performance | ≥99/100 | 99-100/100 |
-| Accessibility | 100/100 | 100/100 |
-| Best Practices | 100/100 | 100/100 |
-| SEO | 100/100 | 100/100 |
-
 ### Image optimization checklist
 
 - [ ] HAP avatar has `fetchpriority="high"` (LCP optimization)
@@ -407,8 +377,8 @@ Station 6 ALWAYS teaches AI assistance and follows a fixed 12-section structure:
 
 ### During implementation
 
-1. Start from template (never copy stations)
-2. Write in first-person from the start
+1. Always start from template (never copy stations)
+2. Write in first-person (HAP's voice) from the start
 3. Verify each HAP image against inventory
 4. Use computed slope formulas in clamp()
 5. Add EXACTLY 3 insight cards
