@@ -12,8 +12,8 @@ This is a **pure HTML/CSS/JS project** with no build process, no frameworks, and
 
 This repository provides infrastructure for creating new HAP Learning Labs on any topic. It includes:
 
-- **7 Claude Skills** - Progressive validation and standards enforcement
-- **4 Templates** - Station HTML, demo HTML, curriculum plan, easter egg data
+- **8 Claude Skills** - Progressive validation and standards enforcement
+- **5 Templates** - Station HTML (1-5 and 6), demo HTML, curriculum plan, easter egg data
 - **Static Assets** - HAP design system CSS, syntax highlighting, easter egg system
 - **Documentation** - Complete guides for customization
 
@@ -72,16 +72,18 @@ npm run lh:ci
 ```
 your-learning-lab/
 ├── .claude/
-│   └── skills/                # 7 Claude Skills for validation
+│   └── skills/                # 8 Claude Skills for validation
 │       ├── hap-voice/        # Voice and personality enforcement
 │       ├── accessibility-check/ # WCAG 2.2 Level AA validation
 │       ├── security-audit/   # OWASP Top 10, XSS prevention
 │       ├── testing-framework/ # Testing decision matrix
 │       ├── station-content/  # Station structure patterns
 │       ├── demo-builder/     # Interactive demo patterns
-│       └── css-standards/    # HSL color format enforcement
+│       ├── css-standards/    # HSL color format enforcement
+│       └── hap-image-validation/ # HAP image validation + inventory
 ├── templates/
-│   ├── station-template.html # Complete station HTML structure
+│   ├── station-template.html # Complete station HTML structure (Stations 1-5)
+│   ├── station6-template.html # Station 6 AI assistance structure
 │   ├── demo-template.html    # Interactive demo structure
 │   ├── curriculum-plan-template.md # Content planning guide
 │   └── hybit-insights-template.json # Easter egg messages
@@ -126,12 +128,19 @@ cp -r data ~/your-new-lab/data
 
 ### Step 4: Customize templates
 
-**For each station (1-6)**:
+**For Stations 1-5**:
 
-1. Copy `templates/station-template.html` → `stations/station[N].html`
+1. Copy `templates/station-template.html` → `stations/station[1-5].html`
 2. Use your `CONTENT-PLAN.md` to fill in [PLACEHOLDER] content
 3. Maintain HAP's first-person apprentice voice
 4. Reference the `hap-voice` and `station-content` Skills
+
+**For Station 6** (AI assistance - fixed structure):
+
+1. Copy `templates/station6-template.html` → `stations/station6.html`
+2. Station 6 ALWAYS teaches AI assistance for your topic
+3. Follows fixed 12-section structure (cannot be customized)
+4. Only customize [PLACEHOLDER] content, not structure
 
 **For interactive demos**:
 
@@ -213,6 +222,47 @@ Claude Code automatically loads Skills from `.claude/skills/`. To use a Skill:
 - Makes complex topics relatable
 
 See `hap-voice` Skill for complete guidelines.
+
+## HAP image inventory
+
+**IMPORTANT**: When adding HAP images to station content, ALWAYS consult the verified image inventory to prevent hallucination of non-existent images.
+
+**Location**: `.claude/skills/hap-image-validation/hap-cloudinary-complete-inventory.md`
+
+**What it contains**:
+
+- 21 verified HAP images (complete list)
+- Cloudinary URLs with version numbers
+- Emotional categories (learning, confusion, breakthrough, success)
+- Recommended alt text for each image
+- Usage guidelines (when to use which pose)
+
+**Before adding ANY HAP image**:
+
+1. Open `.claude/skills/hap-image-validation/hap-cloudinary-complete-inventory.md`
+2. Find image that matches content emotional context
+3. Copy exact filename (e.g., `hap-laptop_xiewar`)
+4. Copy exact version number (e.g., `v1759495998`)
+5. Use recommended alt text from inventory
+6. Verify emotional category matches your content
+
+**Example workflow**:
+
+```markdown
+Content context: "HAP was confused about container queries..."
+→ Check inventory → "Confusion category"
+→ Use: hap-confused-map_q8q0ej (v1759495999)
+→ Alt text: "HAP looking confused while studying a map"
+```
+
+**DO NOT**:
+
+- ❌ Guess HAP image filenames
+- ❌ Make up version numbers
+- ❌ Use images not in the inventory
+- ❌ Reuse breakthrough images too frequently (max 1-2 per station)
+
+See `hap-image-validation` Skill for complete validation patterns.
 
 ## Content conventions
 
@@ -390,15 +440,17 @@ Visual elements created with AI assistance.
 ## Common pitfalls to avoid
 
 1. **Don't use Write tool on existing files** - Use Edit instead
-2. **Don't break HAP's voice** - First-person, humble, references Prof. Teeters
-3. **Don't skip performance testing** - Use DevTools MCP or Lighthouse to maintain 99+ scores
-4. **Don't use hex/rgb colors** - Use hsl() format exclusively
-5. **Don't create new files unnecessarily** - Use templates provided
-6. **Don't forget width/height on images** - Causes layout shift
-7. **Don't use color alone** - Pair with icons/text for accessibility
-8. **Don't commit without testing locally** - Ensure JSON loads, images display
-9. **Don't skip Skills validation** - Each Skill prevents specific problems
-10. **Don't use title case in markdown** - Sentence case for `.md` files
+2. **Don't copy from existing stations** - CRITICAL: Always use `templates/station-template.html` or `templates/station6-template.html` as starting point, never copy from completed stations
+3. **Don't break HAP's voice** - First-person, humble, references Prof. Teeters
+4. **Don't hallucinate HAP images** - CRITICAL: Always consult `.claude/skills/hap-image-validation/hap-cloudinary-complete-inventory.md` before adding any HAP image
+5. **Don't skip performance testing** - Use DevTools MCP or Lighthouse to maintain 99+ scores
+6. **Don't use hex/rgb colors** - Use hsl() format exclusively
+7. **Don't create new files unnecessarily** - Use templates provided
+8. **Don't forget width/height on images** - Causes layout shift
+9. **Don't use color alone** - Pair with icons/text for accessibility
+10. **Don't commit without testing locally** - Ensure JSON loads, images display
+11. **Don't skip Skills validation** - Each Skill prevents specific problems
+12. **Don't use title case in markdown** - Sentence case for `.md` files
 
 ## Getting help
 
