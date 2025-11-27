@@ -2,7 +2,7 @@
 
 **Generated**: November 23, 2025 at 11:15 AM ET
 **Source**: Merged from `hap-cloudinary-image-inventory-links.md` + `links.md`
-**Total verified HAP images**: 21
+**Total verified HAP images**: 22
 **Purpose**: Complete authoritative source for all HAP Cloudinary images with verified version numbers
 
 ⚠️ **CRITICAL**: This inventory contains ONLY images with verified Cloudinary version numbers. All URLs have been tested and confirmed to work.
@@ -36,7 +36,7 @@ https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_[WIDTH],
 
 ---
 
-## Complete inventory of verified HAP images (21 total)
+## Complete inventory of verified HAP images (22 total)
 
 ### 1. Learning & studying poses
 
@@ -402,6 +402,35 @@ https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_150,c_li
 
 ---
 
+#### hap-meets-grace_v2yifo
+
+**Visual**: HAP and Grace Hopper shaking hands, smiling at each other. HAP is the gray robot with a lightbulb. Grace is the white "admiral uniform" robot with glasses, a glowing vacuum tube, anchor insignia, and name badge.
+**Emotional state**: Warm welcome, new partnership, mentorship, friendly collaboration
+**Best for**:
+
+- Introducing Grace Hopper as part of the Learning Lab
+- AI assistance and mentorship sections (especially Station 6)
+- "Meet the team" or About pages
+- Blog posts about HAP learning with help from others
+
+**Cloudinary version**: v1764180952
+
+**Full URL**:
+
+```
+https://res.cloudinary.com/cynthia-teeters/image/upload/v1764180952/hap-meets-grace_v2yifo.jpg
+```
+
+**Optimized URL** (150px width):
+
+```
+https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_150,c_limit/v1764180952/hap-meets-grace_v2yifo.jpg
+```
+
+**Recommended alt text**: "HAP shaking hands with Grace Hopper, two friendly robots meeting and beginning to work together"
+
+---
+
 ### 6. Tool & preparation poses
 
 #### hap-has-tools_kgoeys
@@ -737,6 +766,7 @@ https://res.cloudinary.com/cynthia-teeters/image/upload/f_auto,q_auto,w_150,c_li
 | hap-scientist_safwtg | v1763230817 | Teaching | 150px | Experimenting, testing |
 | hap-waving_dgzacg | v1759495998 | Friendly | 120px | Greetings, farewells |
 | hap-tools-wave_d31zdx | v1763230781 | Friendly | 150px | Ready to help |
+| hap-meets-grace_v2yifo | v1764180952 | Friendly | 150px | Mentorship, Station 6 |
 | hap-has-tools_kgoeys | v1763230490 | Tools | 150px | Preparation, setup |
 | hap-w-bug_fztbl6 | v1763230718 | Activity | 150px | Debugging |
 | hap-juggles_v2zxeq | v1763230577 | Activity | 150px | Multi-tasking |
@@ -777,6 +807,7 @@ poses: {
   'scientist': { filename: 'hap-scientist_safwtg', version: '1763230817' },
   'sconcerned-laptop': { filename: 'hap-sconcerned-laptop_frh5ua', version: '1763230464' },
   'tools-wave': { filename: 'hap-tools-wave_d31zdx', version: '1763230781' },
+  'meets-grace': { filename: 'hap-meets-grace_v2yifo', version: '1764180952' },
   'has-tools': { filename: 'hap-has-tools_kgoeys', version: '1763230490' },
   'w-bug': { filename: 'hap-w-bug_fztbl6', version: '1763230718' },
   'juggles': { filename: 'hap-juggles_v2zxeq', version: '1763230577' },
@@ -807,6 +838,11 @@ Before using ANY HAP image:
 
 ## Change log
 
+**November 26, 2025**:
+
+- Added `hap-meets-grace_v2yifo` (v1764180952) - HAP and Grace Hopper meeting
+- Total verified images: 22
+
 **November 23, 2025 at 11:15 AM ET**:
 
 - Merged `hap-cloudinary-image-inventory-links.md` + `links.md`
@@ -819,7 +855,7 @@ Before using ANY HAP image:
 
 ---
 
-**Last updated**: November 23, 2025 at 11:15 AM ET
+**Last updated**: November 26, 2025
 **Maintained by**: Prof. Cynthia Teeters
 **Source files merged**:
 - `hap-cloudinary-image-inventory-links.md` (comprehensive documentation)
